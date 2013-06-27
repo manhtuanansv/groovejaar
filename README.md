@@ -37,9 +37,4 @@ No installation is required, all you need is the compiled version and the config
 GrooveJaar provide the possibility to download the music stream of a song. Basically this can be viewed like a "bad" thing. But on Grooveshark you can find a lot of of free music, and if this music is free you can also download without problems!
 For example take a look at this album [Quorum](http://grooveshark.com/#!/album/Quorum+web+album+/4709089), is released completly free so why I can't download ?
 Of course there're a lot of copyrighted songs but the software can't handle what is free and what isn't free. Also GrooveJaar don't provide nothing himself and you need to refeer to the [GrooveShark DMCA Policy] (http://www.grooveshark.com/dmca).
-If you still think that this software have something that can lead a copyright owner just contact me and I will be happy to make all the modification to the source code that can avoid any type of problem.
-
-
-## Bug
-
-Before report a bug check the [WIKI PAGE] (https://github.com/Ale46/groovejaar/wiki/GrooveJaar), if after reading the wiki you still think that you caught a bug make a [NEW ISSUE] (https://github.com/Ale46/groovejaar/issues/new).
+Anyway due to this problems the development process is definitely **stopped** and no binaries will be provided.
