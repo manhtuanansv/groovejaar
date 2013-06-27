@@ -22,7 +22,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -73,14 +72,13 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import javax.swing.table.DefaultTableModel;
-
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import jgroove.JGroove;
 import jgroove.JGroovex;
+import jgroove.SongStream;
 import jgroove.jsonx.JsonGetSong.Result;
 import jgroove.jsonx.JsonUser;
 
@@ -624,7 +622,7 @@ public class GrooveJaar {
 				//System.out.println("Serverid:"+songURL.streamKey);
 				//System.out.println("Serverid:"+songURL.ip);
 
-				Object[] params = null;
+				SongStream params = null;
 
 				InputStream is = null;
 				int downloaded=0;
@@ -635,7 +633,7 @@ public class GrooveJaar {
 
 					e1.printStackTrace();
 				}
-				is = (InputStream)params[1];
+				is = params.getStream();
 				//int lenght = (Integer) params[0];
 
 				File tempMp3=new File(System.getProperty ("user.dir")+File.separator+"temp"+File.separator+songID+".mp3");
@@ -648,7 +646,7 @@ public class GrooveJaar {
 					e.printStackTrace();
 				}
 				byte buf[]=new byte[1024];
-				double size = Double.parseDouble(params[0].toString())/1048576;
+				double size = (params.getSize())/1048576;
 				GrooveJaar.this.lblSize.setText(("<html>Size: <font color='blue'>")+String.format("%.2f", size)+ " MB</font></html>");
 				try {
 
@@ -735,15 +733,16 @@ public class GrooveJaar {
 					modelDl.setValueAt(("Error"), lastRow-1, 1);
 					e1.printStackTrace();
 				}
-				//System.out.println("Serverid:"+songURL.streamServerID);
-				//System.out.println("Serverid:"+songURL.streamKey);
-				//System.out.println("Serverid:"+songURL.ip);
+				System.out.println("Serverid:"+songURL.streamServerID);
+				System.out.println("Serverid:"+songURL.streamKey);
+				System.out.println("Serverid:"+songURL.ip);
 				modelDl.setValueAt(("Downloading"), lastRow-1, 1);
-				Object[] params = null;
+				SongStream params = null;
 
 				InputStream is = null;
 				int downloaded=0;
 				try {
+					
 					params =  JGroovex.getSongStream(songURL.ip, songURL.streamKey);
 					JGroovex.markSongAsDownloaded(songURL.streamServerID, songURL.streamKey, id);
 					initTimer(songURL.streamServerID, songURL.streamKey, id);
@@ -751,8 +750,8 @@ public class GrooveJaar {
 					modelDl.setValueAt(("Error"), lastRow-1, 1);
 					e1.printStackTrace();
 				}
-				is = (InputStream)params[1];
-				int lenght = (Integer) params[0];
+				is = params.getStream();
+				int lenght = params.getSize();
 
 				File f=new File(downloadPath+File.separator+clearTitle(title)+".mp3");
 				OutputStream out = null;

@@ -19,12 +19,11 @@ package jaco.mp3.player;
 
 
 import groovejaar.GrooveJaar;
-
 import jaco.mp3.resources.Decoder;
 import jaco.mp3.resources.Frame;
 import jaco.mp3.resources.SampleBuffer;
 import jaco.mp3.resources.SoundStream;
-import jgroove.jsonx.JsonGetSong.Result;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -34,6 +33,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.BooleanControl;
@@ -44,6 +44,9 @@ import javax.sound.sampled.SourceDataLine;
 import javax.swing.JPanel;
 
 import jgroove.JGroovex;
+import jgroove.jsonx.JsonGetSong.Result;
+
+
 
 /**
  * Java MP3 Player
@@ -165,7 +168,7 @@ public class MP3Player extends JPanel {
 						}
 						 */	
 						Result songURL = JGroovex.getSongURL(playlistObject).result;
-						inputStream = (InputStream) JGroovex.getSongStream(songURL.ip, songURL.streamKey)[1];
+						inputStream = JGroovex.getSongStream(songURL.ip, songURL.streamKey).getStream();
 						JGroovex.markSongAsDownloaded(songURL.streamServerID, songURL.streamKey, playlistObject);
 						GrooveJaar.initTimer(songURL.streamServerID, songURL.streamKey, playlistObject);
 						SoundStream soundStream = new SoundStream(inputStream);
