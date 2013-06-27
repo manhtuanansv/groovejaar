@@ -10,6 +10,7 @@
         <pathelement location="libs/gson-1.7.1.jar"/>
         <pathelement location="libs/jaudiotagger-2.0.1.jar"/>
         <pathelement location="libs/miglayout15-swing.jar"/>
+    	<pathelement location="libs/jgroove.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
