@@ -6,18 +6,33 @@ GrooveJaar is written in **JAVA**, is **OPEN SOURCE**  and support Windows, Mac 
  
  
 ## Build
-First you have to build jgroove library
-```
-	git clone https://github.com/Ale46/jgroove
-	cd jgroove/src
-	ant -f build.xml
-	cp jgroove.jar /path_of_groovejaar/libs/
-	cp token.properties /path_of_groovejaar/
-```
-Then you can proceed to compile groovejaar with the ant build file provided with
+### Install JDK
+Before do anything if you don't have [JDK 7] (http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u2-download-1377129.html)  or [JRE 7] (http://www.oracle.com/technetwork/java/javase/downloads/jre-7u2-download-1377135.html) installed, download and install both.
 
-	ant -f build.xml 
+*With previous version of JRE and JDK you'll get compiling errors, take care also that the JAVA_HOME variable point to the correct path*
 
+### Compile jgroove
+```
+git clone https://github.com/Ale46/jgroove.git
+cd jgroove/src
+ant -f build.xml
+```
+### Compile groovejaar
+```
+git clone https://github.com/Ale46/groovejaar.git
+cd groovejaar
+cp /jgroove_path/jgroove.jar ./libs/
+cp /jgroove_path/token.properties .
+ant -f build.xml 
+```
+## Run
+```
+java -jar groovejaar.jar
+```
+Or with proxy
+```
+java -Dhttp.proxyHost=myproxyserver.com  -Dhttp.proxyPort=80 -jar groovejaar.jar
+```
 ## Install
 
 No installation is required, all you need is the compiled version and the configuration files of the programs. For this reason you can consider GrooveJaar as a portable software.
