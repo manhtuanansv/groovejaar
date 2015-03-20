@@ -39,14 +39,14 @@
             <classpath refid="Groovejaar.classpath"/>
         </java>
     </target>
-	
+
 	    <target name="create_run_jar">
         <jar destfile="groovejaar.jar">
             <manifest>
                 <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
                 <attribute name="Rsrc-Main-Class" value="groovejaar.Splasher"/>
                 <attribute name="Class-Path" value="."/>
-                <attribute name="Rsrc-Class-Path" value="./ forms-1.3.0.jar gson-1.7.1.jar jaudiotagger-2.0.1.jar miglayout15-swing.jar"/>
+                <attribute name="Rsrc-Class-Path" value="./ forms-1.3.0.jar gson-1.7.1.jar jaudiotagger-2.0.1.jar miglayout15-swing.jar jgroove.jar"/>
             </manifest>
             <zipfileset src="libs/jar-in-jar-loader.zip"/>
             <fileset dir="bin"/>
@@ -54,6 +54,7 @@
             <zipfileset dir="libs" includes="gson-1.7.1.jar"/>
             <zipfileset dir="libs" includes="jaudiotagger-2.0.1.jar"/>
             <zipfileset dir="libs" includes="miglayout15-swing.jar"/>
+            <zipfileset dir="libs" includes="jgroove.jar"/>
         </jar>
     </target>
 </project>
