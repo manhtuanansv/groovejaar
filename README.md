@@ -6,8 +6,15 @@ GrooveJaar is written in **JAVA**, is **OPEN SOURCE**  and support Windows, Mac 
  
  
 ## Build
-
-You can download the source and compile all the project with the ant build file provided.
+First you have to build jgroove library
+```
+	git clone https://github.com/Ale46/jgroove
+	cd jgroove/src
+	ant -f build.xml
+	cp jgroove.jar /path_of_groovejaar/libs/
+	cp token.properties /path_of_groovejaar/
+```
+Then you can proceed to compile groovejaar with the ant build file provided with
 
 	ant -f build.xml 
 
